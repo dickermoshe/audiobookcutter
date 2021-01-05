@@ -1,15 +1,16 @@
 import os
 import eyed3
-def mp3gen():
-    for root, dirs, files in os.walk('.'):
-        for filename in files:
-            if os.path.splitext(filename)[1] == ".mp3":
-                yield os.path.join(root, filename)
 
-x = [i for i in mp3gen()]
+
+x = [i  for i in os.listdir() if i[-3:] == 'mp3']
+
 for s in x:
     album = s[:-4]
-    duration = eyed3.load(s).info.time_secs
+    try:
+        duration = eyed3.load(s).info.time_secs
+    except:
+        continue
+    
     for i in range(1,int(duration//1200)+1):
         start = str(i*1200-1200)
         end = str(i*1200)

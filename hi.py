@@ -2,7 +2,7 @@ import os
 import eyed3
 os.mkdir('out')
 
-x = [i  for i in os.listdir() if i[-3:] == 'mp3']
+x = [i  for i in os.listdir() if i[-3:].lower() == 'mp3']
 
 for s in x:
     album = s[:-4]
